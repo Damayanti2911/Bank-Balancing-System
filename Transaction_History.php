@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Bank database</title>
+<title>Transaction History</title>
 
 <style>
 body
@@ -32,17 +32,17 @@ tr:nth-child(even) {background-color: #f2f2f2}
 
 <center>
 <h1 style="font-size: 50px; color: white;"> 
-Available Balanace
+Transaction History
 </h1>
 </center>
 
 
 <table>
 <tr>
-<th> Cus_ID</th>
-<th>Cus_Name</th>
-<th>E-mail</th>
-<th> Current_Balance</th>
+<th> Paider</th>
+<th>Receiver</th>
+<th>Amount_Transferred</th>
+
 </tr>
 
 <?php
@@ -52,13 +52,13 @@ $conn = mysqli_connect("localhost:8080", "root", "Damayanti@29", "database");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * FROM Customer_database";
+$sql = "SELECT * FROM transaction_table";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["Cus_ID"]. "</td><td>" . $row["Cus_Name"] . "</td><td>" . $row["E-mail"]."</td><td>" . $row["Current_Balance"]. "</td></tr>";
+echo "<tr><td>" . $row["Paider"]. "</td><td>" . $row["Receiver"] . "</td><td>" . $row["Amount_Transferred"]."</td><td>" . "</td></tr>";
 }
 echo "</table>";
 } else { echo "No results"; }
@@ -89,7 +89,7 @@ cursor: pointer;
 <body>
 
 <br>
-<a href='http://localhost/PHPinVisualStudioCode/Bank%20Balancing%20System/Transaction_History.php'>
+<a href='http://localhost/PHPinVisualStudioCode/Bank%20Balancing%20System/Thank_you.php'>
 
   <p style="text-align:center;">
     <button  class="button" >
